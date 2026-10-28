@@ -1,0 +1,20 @@
+/* Preserve the original typefaces, sizes, italics and layout. */
+body { word-spacing:normal; font-kerning:normal; font-variant-ligatures:common-ligatures contextual; }
+h1,h2,h3,h4,p,span,a,button,label,summary {
+  font-kerning:normal;
+  font-variant-ligatures:common-ligatures contextual;
+  word-spacing:normal;
+}
+/* Reduce the wide tracking on small labels without squeezing Vietnamese marks. */
+.eyebrow,.hero .eyebrow,.micro-label,.feature-kicker,.plan-name,
+.premium-label,.problem-number,.preview-header>span:first-child,
+.phone-kicker,.photo-caption,.sample-label,.round-seal span,
+.download-scene .eyebrow,.download-scene-bottom {
+  letter-spacing:0;
+}
+.brand-sub,.site-header .brand-sub,.download-brand small { letter-spacing:.05em; }
+@media(max-width:680px) {
+  .hero .eyebrow,.eyebrow,.micro-label,.feature-kicker,.premium-label,
+  .download-scene .eyebrow,.download-scene-bottom { letter-spacing:0; }
+  .brand-sub,.site-header .brand-sub { letter-spacing:.05em; }
+}
