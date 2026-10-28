@@ -39,9 +39,9 @@ function openInfo(type, trigger) {
     $('#info-title').textContent = 'Premium trong ứng dụng.';
     $('#info-content').innerHTML = `<div class="info-copy"><p>Gói đang xem: <strong>${billing === 'yearly' ? '299.000đ/năm' : '39.000đ/tháng'}</strong>.</p><p>Không giới hạn món trong tủ, dọn tủ AI, quét hóa đơn, tạo thực đơn và đổi món bằng AI.</p><p>Đăng ký gói và thanh toán được thực hiện trong ứng dụng di động qua QR ngân hàng với PayOS.</p><p>Xem thông tin tải app bên dưới để biết tình trạng phát hành trên Google Play.</p></div>`;
   } else {
-    $('#info-eyebrow').textContent = 'TỪ NHỮNG BỮA CƠM QUEN THUỘC';
-    $('#info-title').textContent = 'Người bạn nhỏ của bếp Việt.';
-    $('#info-content').innerHTML = '<div class="info-copy"><p><strong>Eco-Pantry Helper</strong> là dự án ứng dụng di động của nhóm, giúp gia đình Việt quản lý thực phẩm và giảm áp lực lo bữa ăn mỗi ngày.</p><p>Hai tính năng chính là dọn tủ bằng AI và lập thực đơn → đi chợ → cất tủ. Các tính năng được sử dụng trên điện thoại sau khi cài ứng dụng.</p><p>Trang này giới thiệu dự án, giải thích tính năng, các gói sử dụng và hướng dẫn tải app.</p></div>';
+    $('#info-eyebrow').textContent = 'TỪ SỰ QUAN TÂM DÀNH CHO BẾP NHÀ';
+    $('#info-title').textContent = 'Cùng bạn chăm chút bữa cơm nhà.';
+    $('#info-content').innerHTML = '<div class="info-copy"><p>Đằng sau một bữa cơm là bao điều phải nghĩ: hôm nay nấu gì, tủ còn những gì, đi chợ mua thêm bao nhiêu cho vừa. Giữa những ngày bận rộn, ai lo bữa ăn cho cả nhà cũng cần một người san sẻ.</p><p><strong>Eco-Pantry Helper</strong> là người bạn nhỏ mà nhóm chúng mình đang xây dựng để đồng hành cùng bạn. Từ việc nhớ những món còn trong tủ, gợi ý bữa ngon từ nguyên liệu sẵn có đến chuẩn bị danh sách đi chợ vừa đủ — app giúp việc chăm bếp nhẹ nhàng hơn từng chút.</p><p>Chúng mình mong những mớ rau được dùng khi còn tươi, những món ngon được nấu từ đồ đang có, và bạn có thêm thời gian cho người thân bên mâm cơm. <strong>Bớt bỏ phí một chút, thêm yêu bếp nhà một chút.</strong></p></div>';
   }
   infoDialog.showModal();
 }
