@@ -1,74 +1,81 @@
-/* Marketing and download information only. No product trial on this website. */
+/* The website introduces the Android app; product features run on mobile. */
 .phone-screen-label { cursor:default; }
 .preview-caption { margin:17px 0 0; padding-top:15px; border-top:1px solid var(--line); color:var(--muted); font-size:9px; line-height:1.9; }
 .week-days .app-day { flex:1; display:flex; align-items:center; justify-content:center; flex-direction:column; min-height:72px; padding:10px 5px; border:1px solid var(--line); border-radius:14px; background:var(--cream); font-size:17px; color:var(--body); }
 .week-days .app-day>span { display:block; font-size:8px; margin-top:5px; }
 .week-days .app-day.is-highlighted { background:var(--forest); color:var(--paper); border-color:var(--forest); }
-.app-download { padding-top:30px; }
-.download-layout { display:grid; grid-template-columns:1.05fr .95fr; gap:80px; align-items:center; padding:54px; border:1px solid var(--line); border-radius:35px; background:var(--paper); }
-.download-copy h2 { margin-top:18px; font-size:53px; line-height:1.1; }
-.download-copy>p:not(.eyebrow) { max-width:420px; margin-top:21px; font-size:12px; line-height:1.95; }
-.download-facts { display:flex; gap:17px; flex-wrap:wrap; margin-top:25px; }
-.download-facts span { display:inline-flex; gap:7px; align-items:center; font-size:10px; color:var(--forest); }
-.download-facts .icon { width:16px; height:16px; }
-.release-card { padding:30px; border:1px solid var(--line); border-radius:25px; background:var(--cream); }
-.release-app { display:flex; align-items:center; gap:14px; }
-.release-app-icon { display:grid; place-items:center; width:61px; height:65px; flex-shrink:0; border-radius:19px 19px 19px 6px; background:var(--forest); color:var(--paper); }
-.release-app-icon .icon { width:37px; height:37px; stroke-width:1.2; }
-.release-app strong { display:block; font:27px/1.15 var(--serif); letter-spacing:-.5px; }
-.release-app small { display:block; margin-top:6px; font-size:9px; line-height:1.8; color:var(--body); }
-.release-status { display:inline-flex; align-items:center; gap:7px; border-radius:999px; background:var(--sage); color:var(--forest); font-size:9px; padding:7px 11px; margin-top:25px; }
-.release-status:before { content:''; width:5px; height:5px; border-radius:50%; background:currentColor; }
-.release-card>p:not(.release-status):not(.release-link-note) { font-size:11px; line-height:1.95; margin-top:15px; }
-.google-play-link { display:flex; align-items:center; justify-content:space-between; gap:15px; padding:16px 18px; margin-top:23px; min-height:74px; border:1px solid var(--forest); border-radius:15px; color:var(--paper); background:var(--forest); transition:transform .25s,box-shadow .25s; }
-.google-play-link:hover { transform:translateY(-3px); box-shadow:0 8px 20px color-mix(in srgb,var(--forest) 12%,transparent); }
-.google-play-link>.icon:first-child { width:31px; height:31px; }
-.google-play-link>span { flex:1; }
-.google-play-link small { display:block; font-size:8px; letter-spacing:1px; line-height:1.7; color:var(--cream); }
-.google-play-link strong { display:block; font-size:17px; font-weight:500; line-height:1.6; }
-.google-play-link>.icon:last-child { width:18px; height:18px; }
-.release-link-note { color:var(--muted); font-size:9px; line-height:1.9; padding-top:16px; margin-top:17px; border-top:1px solid var(--line); }
 .journey-detail>a.button { flex-shrink:0; }
-.marketing-app-label { font-size:10px; color:var(--forest); }
-@media(max-width:1150px) {
-  .download-layout { gap:40px; padding:40px; }
-  .download-copy h2 { font-size:46px; }
-  .release-card { padding:25px; }
-  .release-app strong { font-size:24px; }
-}
+
+/* Keep the supplied Google Play badge intact, including its clear space. */
+.play-badge-link { display:inline-flex; flex-shrink:0; width:202px; border-radius:10px; transition:transform .25s ease; }
+.play-badge-link:hover { transform:translateY(-3px); }
+.play-badge-link:focus-visible { outline:3px solid var(--orange); outline-offset:5px; }
+.play-badge-link img { display:block; width:100%; height:auto; }
+.hero-actions { gap:22px; }
+.hero-play-link { width:193px; margin-left:-10px; }
+.hero .hero-note { margin-top:8px; }
+.hero-release-note { color:var(--muted); font-size:9px; line-height:1.85; max-width:340px; margin-top:9px; }
+
+/* A centered, image-led download moment inspired by the supplied WEDO screen. */
+.app-download { padding-top:20px; padding-bottom:90px; }
+.download-scene { position:relative; isolation:isolate; display:grid; place-items:center; overflow:hidden; min-height:670px; padding:55px 40px 65px; border-radius:38px 70px 38px 38px; color:var(--paper); background:var(--forest); }
+.download-backdrop { position:absolute; z-index:-3; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 53%; }
+.download-scene:before { content:''; position:absolute; z-index:-2; inset:0; background:linear-gradient(90deg,color-mix(in srgb,var(--forest) 92%,transparent),color-mix(in srgb,var(--forest) 87%,transparent) 52%,color-mix(in srgb,var(--forest) 58%,transparent)); }
+.download-scene:after { content:''; position:absolute; z-index:-1; inset:0; background:linear-gradient(0deg,color-mix(in srgb,var(--forest) 72%,transparent),transparent 45%); }
+.download-scene-content { text-align:center; max-width:780px; }
+.download-brand { display:inline-flex; align-items:center; gap:9px; margin-bottom:29px; color:var(--cream); }
+.download-brand>.icon { width:32px; height:32px; stroke-width:1.15; }
+.download-brand>span { font:26px/1 var(--serif); text-align:left; }
+.download-brand small { display:block; font:6px/1.5 var(--sans); letter-spacing:3px; margin-top:5px; }
+.download-scene .eyebrow { color:var(--sage); font-size:9px; letter-spacing:2px; }
+.download-scene h2 { font:500 clamp(48px,5.8vw,76px)/1.04 var(--serif); letter-spacing:-2px; margin-top:20px; color:var(--paper); }
+.download-scene h2 em { color:var(--sage); font-weight:400; }
+.download-description { margin:23px auto 0; max-width:570px; color:var(--cream); font-size:13px; line-height:1.95; }
+.release-status { display:inline-flex; gap:8px; align-items:center; margin-top:27px; padding:8px 14px; border:1px solid color-mix(in srgb,var(--sage) 30%,transparent); border-radius:99px; font-size:9px; line-height:1.5; color:var(--sage); background:color-mix(in srgb,var(--forest) 65%,transparent); }
+.release-status:before { content:''; width:5px; height:5px; background:var(--sage); border-radius:50%; }
+.download-play-link { display:flex; width:218px; margin:7px auto 0; }
+.download-platform { display:flex; justify-content:center; align-items:center; gap:9px; color:var(--cream); font-size:10px; margin-top:3px; }
+.download-platform .icon { width:14px; height:14px; }
+.download-platform>span { color:var(--sage); }
+.release-description { margin-top:20px; color:var(--cream); font-size:10px; line-height:1.8; }
+.release-link-note { margin:5px auto 0; max-width:450px; color:var(--sage); font-size:9px; line-height:1.9; }
+.download-scene-bottom { position:absolute; right:26px; bottom:24px; font-size:7px; letter-spacing:2px; color:var(--sage); opacity:.7; }
+
 @media(max-width:900px) {
-  .download-layout { gap:28px; padding:32px; }
-  .download-copy h2 { font-size:40px; }
-  .download-copy>p:not(.eyebrow) { font-size:11px; }
-  .release-card { padding:23px; }
-  .release-app { gap:10px; }
-  .release-app-icon { width:48px; height:52px; border-radius:14px 14px 14px 5px; }
-  .release-app-icon .icon { width:29px; height:29px; }
-  .release-app strong { font-size:21px; }
-  .google-play-link { padding-inline:15px; }
-  .google-play-link strong { font-size:15px; }
+  .hero-actions { gap:15px; }
+  .hero-play-link { width:170px; margin-left:-8px; }
+  .hero-release-note { font-size:8px; }
+  .download-scene { min-height:640px; padding-inline:30px; }
 }
 @media(max-width:680px) {
-  .app-download { padding-top:0; }
-  .download-layout { grid-template-columns:1fr; gap:28px; padding:31px 24px; border-radius:27px; }
-  .download-copy h2 { font-size:42px; }
-  .download-copy>p:not(.eyebrow) { font-size:12px; margin-top:17px; }
-  .download-facts { gap:14px; margin-top:20px; }
-  .download-facts span { font-size:9px; }
-  .release-card { padding:24px 21px; border-radius:21px; }
-  .release-app strong { font-size:24px; }
-  .release-app small { font-size:8px; }
-  .release-status { font-size:8px; }
-  .google-play-link { padding:15px; }
-  .google-play-link strong { font-size:16px; }
-  .release-link-note { font-size:9px; }
+  .hero-actions { gap:15px; margin-top:21px; flex-wrap:wrap; }
+  .hero-play-link { width:176px; }
+  .hero-actions .text-button { font-size:9px; gap:7px; }
+  .hero .hero-note { font-size:9px; margin-top:5px; }
+  .hero-release-note { font-size:8px; margin-top:8px; max-width:300px; }
+  .app-download { padding-top:0; padding-bottom:58px; }
+  .download-scene { min-height:0; padding:38px 22px 50px; border-radius:27px 45px 27px 27px; }
+  .download-scene:before { background:color-mix(in srgb,var(--forest) 86%,transparent); }
+  .download-brand { margin-bottom:27px; }
+  .download-brand>span { font-size:24px; }
+  .download-scene .eyebrow { font-size:7px; letter-spacing:1.5px; }
+  .download-scene h2 { font-size:48px; letter-spacing:-1.6px; margin-top:20px; }
+  .download-description { font-size:11px; line-height:1.95; margin-top:20px; }
+  .release-status { margin-top:23px; font-size:8px; }
+  .download-play-link { width:202px; }
+  .download-platform { font-size:9px; }
+  .release-description { margin-top:19px; font-size:9px; }
+  .release-link-note { font-size:8px; line-height:1.95; margin-top:8px; }
+  .release-link-note br { display:none; }
+  .download-scene-bottom { font-size:6px; right:22px; bottom:18px; letter-spacing:1.5px; }
   .week-days .app-day { min-height:66px; font-size:16px; }
   .journey-detail>a.button { margin-left:0; width:100%; font-size:10px; }
 }
 @media(max-width:370px) {
-  .download-layout { padding-inline:20px; }
-  .download-copy h2 { font-size:38px; }
-  .release-card { padding-inline:18px; }
-  .release-app strong { font-size:22px; }
+  .hero-actions { gap:10px; }
+  .hero-play-link { width:167px; }
+  .hero-actions .text-button { font-size:8px; }
+  .download-scene { padding-inline:18px; }
+  .download-scene h2 { font-size:43px; }
 }
-@media(prefers-reduced-motion:reduce) { .google-play-link { transition:none; } }
+@media(prefers-reduced-motion:reduce) { .play-badge-link { transition:none; } }

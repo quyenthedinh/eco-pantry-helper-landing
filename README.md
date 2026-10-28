@@ -57,6 +57,8 @@ Mở `app-release.js`, gán link chính thức dạng `https://play.google.com/s
 
 ## Tham khảo bố cục và cách kể câu chuyện
 
+- Ảnh WEDO do nhóm cung cấp — bố cục tải ứng dụng căn giữa, tiêu đề lớn và huy hiệu cửa hàng. Eco-Pantry chỉ giới thiệu bản Android trên Google Play.
+- Huy hiệu Google Play tiếng Việt: `assets/google-play-badge-vi.png`, tải từ `https://play.google.com/intl/en_us/badges/static/images/badges/vi_badge_web_generic.png`; giữ nguyên hình ảnh, tỉ lệ và khoảng trống của huy hiệu.
 - https://www.grab.com/vn/ — định vị lợi ích và giới thiệu nhóm dịch vụ.
 - https://samsungfood.com/ — kết nối lập thực đơn, nguyên liệu và đi chợ.
 - https://kitchenpalapp.com/en/ — quản lý thực phẩm, hạn dùng và gợi ý món.
