@@ -50,14 +50,6 @@ featureTabs.forEach((tab, index) => {
   });
 });
 
-let billing = 'monthly';
-$$('[data-billing]').forEach(button => button.addEventListener('click', () => {
-  billing = button.dataset.billing;
-  $$('[data-billing]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-  $('#premium-price').textContent = billing === 'yearly' ? '299.000' : '39.000';
-  $('#premium-period').textContent = billing === 'yearly' ? '/ năm' : '/ tháng';
-}));
-
 // Informational dialogs only: application features run in the mobile app.
 const infoDialog = $('#info-dialog');
 let infoTrigger;
@@ -65,6 +57,7 @@ function openInfo(type, trigger) {
   infoTrigger = trigger;
   closeMenu();
   if (type === 'premium') {
+    const billing = $('[name="billing"]:checked').value;
     $('#info-eyebrow').textContent = 'THÊM MỘT CHÚT THẢNH THƠI';
     $('#info-title').textContent = 'Premium trong ứng dụng.';
     $('#info-content').innerHTML = `<div class="info-copy"><p>Gói đang xem: <strong>${billing === 'yearly' ? '299.000đ/năm' : '39.000đ/tháng'}</strong>.</p><p>Không giới hạn món trong tủ, dọn tủ AI, quét hóa đơn, tạo thực đơn và đổi món bằng AI.</p><p>Đăng ký gói và thanh toán được thực hiện trong ứng dụng di động qua QR ngân hàng với PayOS.</p><p>Xem thông tin tải app bên dưới để biết tình trạng phát hành trên Google Play.</p></div>`;

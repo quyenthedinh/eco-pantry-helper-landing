@@ -99,7 +99,7 @@ export function enhanceExperience() {
   selectStep(0);
 
   // Price changes have a small visual response; the values stay unchanged.
-  document.querySelectorAll('[data-billing]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-billing]').forEach(input => input.addEventListener('change', () => {
     if (motionPreference.matches) return;
     document.querySelector('.premium .price-amount').animate([{ opacity: .3, translate: '0 7px' }, { opacity: 1, translate: '0 0' }], { duration: 260, easing: 'ease-out' });
   }));

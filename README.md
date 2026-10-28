@@ -19,6 +19,8 @@ npm run build
 
 `dist/` chứa website tĩnh để triển khai. Server local chỉ phục vụ HTML, CSS, JavaScript và thư mục assets, không phục vụ file cấu hình.
 
+Bộ chọn giá tháng/năm dùng radio HTML và CSS, nên vẫn chuyển giữa 39.000đ/tháng và 299.000đ/năm khi JavaScript chưa tải hoặc bị chặn. Thông tin Premium trong hộp thoại đọc trực tiếp gói đang chọn.
+
 ## Cấu trúc
 
 - `index.html`: nội dung, điều hướng, SVG icons, thông tin SEO.

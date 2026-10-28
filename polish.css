@@ -99,8 +99,13 @@ html { scroll-padding-top: 112px; }
 .little-grid article>.icon { margin-bottom:14px; }
 .little-grid p { max-width:none; }
 .billing-switch { border-radius:999px; padding:6px; margin-bottom:48px; }
-.billing-switch button { border-radius:999px; padding-inline:21px; }
-.billing-switch button span { border-radius:999px; }
+.billing-switch label { position:relative; cursor:pointer; border-radius:999px; padding-inline:21px; }
+.billing-switch input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.billing-switch label:has(input:focus-visible) { outline:2px solid var(--forest); outline-offset:3px; }
+.billing-yearly-price { display:none; }
+.pricing-section:has(#billing-yearly:checked) .billing-monthly-price { display:none; }
+.pricing-section:has(#billing-yearly:checked) .billing-yearly-price { display:inline; }
+.billing-switch label span { border-radius:999px; }
 .pricing-grid { max-width:930px; gap:28px; align-items:start; }
 .price-card { padding:37px; border-radius:29px; transition:transform .4s var(--ease-out),box-shadow .4s; }
 .price-card.premium { margin-top:19px; border-radius:29px 48px 29px 29px; }
@@ -308,7 +313,7 @@ dialog::backdrop { animation:backdrop-arrive .3s ease-out; }
   .little-grid h3 { font-size:11px; }
   .little-grid p { font-size:10px; }
   .billing-switch { margin-bottom:37px; padding:5px; }
-  .billing-switch button { padding-inline:15px; }
+  .billing-switch label { padding-inline:15px; }
   .pricing-grid { gap:24px; }
   .price-card { border-radius:27px; padding:30px; }
   .price-card.premium { margin-top:0; border-radius:27px 42px 27px 27px; }
