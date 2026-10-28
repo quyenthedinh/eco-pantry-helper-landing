@@ -2,28 +2,67 @@
 
 Landing page tiếng Việt giới thiệu ứng dụng của nhóm, theo tài liệu tổng quan và tab DATA ngày 25/10/2026. Website chỉ dùng để giới thiệu và marketing cho ứng dụng di động, hướng người xem sang Google Play. Không cung cấp phiên bản web hoặc luồng dùng thử app. Dashboard phân tích thuộc sản phẩm nội bộ, không triển khai trên website này.
 
-## Chạy dự án
+## Mở và chạy trong VS Code
 
-Cần Node.js 20 trở lên. Không cần cài thư viện bên ngoài.
+Yêu cầu: Node.js 20 trở lên và VS Code. Dự án dùng HTML, CSS, JavaScript và máy chủ Node.js có sẵn; không cần cài thư viện, không cần API key hay tài khoản dịch vụ để chạy localhost.
+
+### Cách 1: Nhấn F5
+
+1. Giải nén `eco-pantry-helper-local.zip` nếu dùng bản ZIP.
+2. Trong VS Code, chọn **File → Open Folder…** rồi mở thư mục chứa `package.json` và `index.html`.
+3. Nhấn **F5** hoặc mở **Run and Debug**. Chọn **Eco-Pantry: localhost (Edge)** hoặc **Eco-Pantry: localhost (Chrome)**, tùy trình duyệt có trên máy.
+4. VS Code tự chạy máy chủ và mở **http://localhost:5173**.
+
+Cấu hình đã có trong `.vscode/launch.json` và `.vscode/tasks.json`. Không cần cài extension Live Server. Giữ terminal của tác vụ `Eco-Pantry: localhost` mở trong lúc xem trang.
+
+### Cách 2: Chạy bằng terminal
+
+Trong VS Code, chọn **Terminal → New Terminal**. Trên Windows PowerShell, chạy:
+
+```powershell
+npm.cmd run dev
+```
+
+Trên macOS/Linux hoặc terminal khác có npm:
 
 ```sh
 npm run dev
 ```
 
-Mở http://localhost:5173. Có thể đổi cổng bằng biến môi trường `PORT`.
+Mở **http://localhost:5173**. Nếu muốn chạy trực tiếp bằng Node.js, dùng `node scripts/serve.mjs`.
 
-```sh
-npm run check
-npm run build
+### Sửa nội dung và dừng chương trình
+
+- Sửa file, nhấn **Ctrl+S**, rồi tải lại trình duyệt bằng **F5** hoặc **Ctrl+F5** để xem bản mới. Server đọc trực tiếp mã nguồn, không cần build mỗi lần sửa.
+- Để dừng máy chủ, chọn terminal đang chạy server và nhấn **Ctrl+C**. Đóng cửa sổ trình duyệt hoặc dừng trình debug không tự dừng terminal của server.
+- Không mở `index.html` trực tiếp bằng đường dẫn `file://`; các JavaScript module cần được phục vụ qua localhost.
+- Khi F5 đã mở server ở cổng 5173, dùng luôn server đó để xem trang.
+
+### Nếu cổng 5173 đang được sử dụng
+
+Dừng server cũ trong terminal bằng **Ctrl+C**, hoặc chạy ở cổng khác:
+
+```powershell
+npm.cmd run dev -- --port 5174
 ```
 
-`dist/` chứa website tĩnh để triển khai. Server local chỉ phục vụ HTML, CSS, JavaScript và thư mục assets, không phục vụ file cấu hình.
+Sau đó mở **http://localhost:5174**. Cấu hình F5 mặc định vẫn dùng cổng 5173. Nếu terminal chưa tìm thấy `node` hoặc `npm.cmd`, cài Node.js rồi mở lại VS Code.
 
-Bộ chọn giá tháng/năm dùng radio HTML và CSS, nên vẫn chuyển giữa 39.000đ/tháng và 299.000đ/năm khi JavaScript chưa tải hoặc bị chặn. Thông tin Premium trong hộp thoại đọc trực tiếp gói đang chọn.
+### Kiểm tra mã nguồn và xuất bản tĩnh
 
-Bộ chọn giới thiệu “Dọn tủ bằng AI / Thực đơn & đi chợ” cũng dùng radio HTML và CSS, hỗ trợ bấm, chạm và phím mũi tên khi JavaScript bị chặn. Các nút khám phá hành trình chọn cùng điều khiển này.
+```powershell
+npm.cmd run check
+npm.cmd run build
+```
 
-Phần `#quet-hoa-don` giới thiệu tính năng hỗ trợ nhập thực phẩm trong app: chụp hóa đơn bằng camera, chọn ảnh có sẵn hoặc nhập tay, xem lại thông tin trước khi thêm vào tủ. Hạn mức theo tài liệu dự án: miễn phí 3 lượt/tuần, Premium không giới hạn. Hóa đơn trên landing page là dữ liệu minh họa; website không mở camera, nhận file hay xử lý hóa đơn.
+`dist/` chứa website tĩnh để đưa lên hosting khi cần. Chạy localhost không cần `dist/`, cấu hình `.openai/` hoặc kết nối với website đã xuất bản trước đó.
+
+## Các phần đang có
+
+- Bộ chọn giá tháng/năm dùng radio HTML và CSS, chuyển giữa 39.000đ/tháng và 299.000đ/năm ngay cả khi JavaScript chưa tải. Hộp thông tin Premium đọc gói đang chọn.
+- Bộ chọn “Dọn tủ bằng AI / Thực đơn & đi chợ” cũng dùng radio HTML và CSS, hỗ trợ bấm, chạm và phím mũi tên.
+- Phần `#quet-hoa-don` giới thiệu quét hóa đơn trong app: chụp bằng camera, chọn ảnh có sẵn hoặc nhập tay, xem lại trước khi thêm vào tủ. Miễn phí 3 lượt/tuần, Premium không giới hạn. Hóa đơn trên website là minh họa.
+- Màu sắc, kiểu chữ và nội dung “Về dự án” giữ bản đã thống nhất.
 
 ## Cấu trúc
 
@@ -31,9 +70,12 @@ Phần `#quet-hoa-don` giới thiệu tính năng hỗ trợ nhập thực phẩ
 - `styles.css`: hệ màu dự án, typography, responsive và reduced motion.
 - `polish.css`: bố cục mềm hơn, menu nổi, thẻ lệch nhẹ, khung ảnh tự nhiên, hover và responsive; sử dụng lại bảng màu hiện có.
 - `header.css`: header ba cụm logo/menu/CTA theo bố cục tham khảo WeDo; menu điện thoại có biểu tượng, mô tả, đóng bằng Escape hoặc bấm bên ngoài.
-- `main.js`: menu, tab thông tin tính năng, bảng giá, hộp thông tin dự án/Premium.
+- `main.js`: menu và hộp thông tin dự án/Premium; bộ chọn tính năng và giá dùng radio HTML/CSS.
 - `app-release.js`: cấu hình link Google Play chính thức và link cửa hàng thử nghiệm.
 - `marketing.css`: bố cục phần tải app và giao diện minh họa tĩnh.
+- `typography.css`: thu gọn khoảng cách chữ, giữ phông chữ cũ.
+- `receipt.css`: phần giới thiệu quét hóa đơn.
+- `.vscode/`: tác vụ chạy localhost, build và cấu hình F5 cho Edge/Chrome.
 - `motion.js`: hiệu ứng cuộn, đánh dấu mục đang đọc, nút về đầu trang, FAQ và phần khám phá từng bước; tôn trọng tùy chọn giảm chuyển động của thiết bị.
 - `feedback.js`: chọn 1–5 sao, kiểm tra nội dung, xem lại/sửa/tải bản nháp góp ý. Chưa gửi hoặc lưu phản hồi trực tuyến.
 - `assets/bua-com-viet.webp`: ảnh bữa cơm Việt được tạo riêng bằng công cụ ImageGen tích hợp.
