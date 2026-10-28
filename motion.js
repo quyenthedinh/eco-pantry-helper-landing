@@ -1,5 +1,5 @@
 // Presentation only: no tracking, storage, requests or added dependencies.
-export function enhanceExperience({ openDemo }) {
+export function enhanceExperience() {
   const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
   const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   const header = document.querySelector('.site-header');
@@ -64,13 +64,13 @@ export function enhanceExperience({ openDemo }) {
   const journey = document.querySelector('.journey');
   const articles = [...journey.querySelectorAll('article')];
   const stories = [
-    { title: 'Bắt đầu từ một góc tủ nhỏ.', text: 'Thêm thực phẩm bằng tay hoặc quét hóa đơn trong app. Theo dõi tên, lượng còn lại, ngăn bảo quản và hạn dùng ngay tại một nơi.', action: 'Khám phá tủ lạnh mẫu', mode: 'pantry' },
-    { title: 'Một mâm cơm từ những gì đang có.', text: 'Ưu tiên nguyên liệu cần dùng sớm, cân nhắc khẩu vị gia đình. Khi nấu xong, chỉ lượng đã dùng được trừ khỏi tủ.', action: 'Thử gợi ý mâm cơm', mode: 'pantry' },
-    { title: 'Ra chợ với một danh sách vừa đủ.', text: 'Thực đơn được gộp thành danh sách cần mua, trừ phần đã có. Mua xong, chọn ngăn bảo quản và cập nhật đồ mới vào tủ.', action: 'Thử lên kế hoạch đi chợ', mode: 'planner' },
+    { title: 'Bắt đầu từ một góc tủ nhỏ.', text: 'Thêm thực phẩm bằng tay hoặc quét hóa đơn trong app. Theo dõi tên, lượng còn lại, ngăn bảo quản và hạn dùng ngay tại một nơi.', action: 'Tìm hiểu Dọn tủ AI', tab: 'tab-pantry' },
+    { title: 'Một mâm cơm từ những gì đang có.', text: 'Ưu tiên nguyên liệu cần dùng sớm, cân nhắc khẩu vị gia đình. Khi nấu xong, chỉ lượng đã dùng được trừ khỏi tủ.', action: 'Tìm hiểu Dọn tủ AI', tab: 'tab-pantry' },
+    { title: 'Ra chợ với một danh sách vừa đủ.', text: 'Thực đơn được gộp thành danh sách cần mua, trừ phần đã có. Mua xong, chọn ngăn bảo quản và cập nhật đồ mới vào tủ.', action: 'Tìm hiểu thực đơn tuần', tab: 'tab-planning' },
   ];
   const detail = document.createElement('div');
   detail.className = 'journey-detail';
-  detail.innerHTML = `<span class="journey-detail-icon">${icon('leaf')}</span><div class="journey-detail-copy" aria-live="polite"><strong></strong><p></p></div><button type="button" class="button button-outline"></button>`;
+  detail.innerHTML = `<span class="journey-detail-icon">${icon('leaf')}</span><div class="journey-detail-copy" aria-live="polite"><strong></strong><p></p></div><a href="#tinh-nang" class="button button-outline"></a>`;
   journey.after(detail);
   let selectedStep = 0;
   const buttons = articles.map((article, i) => {
@@ -92,10 +92,10 @@ export function enhanceExperience({ openDemo }) {
     });
     detail.querySelector('strong').textContent = story.title;
     detail.querySelector('p').textContent = story.text;
-    detail.querySelector('button').innerHTML = `${story.action}${icon('arrow')}`;
+    detail.querySelector('.button').innerHTML = `${story.action}${icon('arrow')}`;
     if (!motionPreference.matches) detail.querySelector('.journey-detail-copy').animate([{ opacity: 0, translate: '0 6px' }, { opacity: 1, translate: '0 0' }], { duration: 260, easing: 'ease-out' });
   }
-  detail.querySelector('button').addEventListener('click', event => openDemo(stories[selectedStep].mode, event.currentTarget));
+  detail.querySelector('.button').addEventListener('click', () => document.getElementById(stories[selectedStep].tab).click());
   selectStep(0);
 
   // Price changes have a small visual response; the values stay unchanged.

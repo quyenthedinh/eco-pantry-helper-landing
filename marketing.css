@@ -1,0 +1,74 @@
+/* Marketing and download information only. No product trial on this website. */
+.phone-screen-label { cursor:default; }
+.preview-caption { margin:17px 0 0; padding-top:15px; border-top:1px solid var(--line); color:var(--muted); font-size:9px; line-height:1.9; }
+.week-days .app-day { flex:1; display:flex; align-items:center; justify-content:center; flex-direction:column; min-height:72px; padding:10px 5px; border:1px solid var(--line); border-radius:14px; background:var(--cream); font-size:17px; color:var(--body); }
+.week-days .app-day>span { display:block; font-size:8px; margin-top:5px; }
+.week-days .app-day.is-highlighted { background:var(--forest); color:var(--paper); border-color:var(--forest); }
+.app-download { padding-top:30px; }
+.download-layout { display:grid; grid-template-columns:1.05fr .95fr; gap:80px; align-items:center; padding:54px; border:1px solid var(--line); border-radius:35px; background:var(--paper); }
+.download-copy h2 { margin-top:18px; font-size:53px; line-height:1.1; }
+.download-copy>p:not(.eyebrow) { max-width:420px; margin-top:21px; font-size:12px; line-height:1.95; }
+.download-facts { display:flex; gap:17px; flex-wrap:wrap; margin-top:25px; }
+.download-facts span { display:inline-flex; gap:7px; align-items:center; font-size:10px; color:var(--forest); }
+.download-facts .icon { width:16px; height:16px; }
+.release-card { padding:30px; border:1px solid var(--line); border-radius:25px; background:var(--cream); }
+.release-app { display:flex; align-items:center; gap:14px; }
+.release-app-icon { display:grid; place-items:center; width:61px; height:65px; flex-shrink:0; border-radius:19px 19px 19px 6px; background:var(--forest); color:var(--paper); }
+.release-app-icon .icon { width:37px; height:37px; stroke-width:1.2; }
+.release-app strong { display:block; font:27px/1.15 var(--serif); letter-spacing:-.5px; }
+.release-app small { display:block; margin-top:6px; font-size:9px; line-height:1.8; color:var(--body); }
+.release-status { display:inline-flex; align-items:center; gap:7px; border-radius:999px; background:var(--sage); color:var(--forest); font-size:9px; padding:7px 11px; margin-top:25px; }
+.release-status:before { content:''; width:5px; height:5px; border-radius:50%; background:currentColor; }
+.release-card>p:not(.release-status):not(.release-link-note) { font-size:11px; line-height:1.95; margin-top:15px; }
+.google-play-link { display:flex; align-items:center; justify-content:space-between; gap:15px; padding:16px 18px; margin-top:23px; min-height:74px; border:1px solid var(--forest); border-radius:15px; color:var(--paper); background:var(--forest); transition:transform .25s,box-shadow .25s; }
+.google-play-link:hover { transform:translateY(-3px); box-shadow:0 8px 20px color-mix(in srgb,var(--forest) 12%,transparent); }
+.google-play-link>.icon:first-child { width:31px; height:31px; }
+.google-play-link>span { flex:1; }
+.google-play-link small { display:block; font-size:8px; letter-spacing:1px; line-height:1.7; color:var(--cream); }
+.google-play-link strong { display:block; font-size:17px; font-weight:500; line-height:1.6; }
+.google-play-link>.icon:last-child { width:18px; height:18px; }
+.release-link-note { color:var(--muted); font-size:9px; line-height:1.9; padding-top:16px; margin-top:17px; border-top:1px solid var(--line); }
+.journey-detail>a.button { flex-shrink:0; }
+.marketing-app-label { font-size:10px; color:var(--forest); }
+@media(max-width:1150px) {
+  .download-layout { gap:40px; padding:40px; }
+  .download-copy h2 { font-size:46px; }
+  .release-card { padding:25px; }
+  .release-app strong { font-size:24px; }
+}
+@media(max-width:900px) {
+  .download-layout { gap:28px; padding:32px; }
+  .download-copy h2 { font-size:40px; }
+  .download-copy>p:not(.eyebrow) { font-size:11px; }
+  .release-card { padding:23px; }
+  .release-app { gap:10px; }
+  .release-app-icon { width:48px; height:52px; border-radius:14px 14px 14px 5px; }
+  .release-app-icon .icon { width:29px; height:29px; }
+  .release-app strong { font-size:21px; }
+  .google-play-link { padding-inline:15px; }
+  .google-play-link strong { font-size:15px; }
+}
+@media(max-width:680px) {
+  .app-download { padding-top:0; }
+  .download-layout { grid-template-columns:1fr; gap:28px; padding:31px 24px; border-radius:27px; }
+  .download-copy h2 { font-size:42px; }
+  .download-copy>p:not(.eyebrow) { font-size:12px; margin-top:17px; }
+  .download-facts { gap:14px; margin-top:20px; }
+  .download-facts span { font-size:9px; }
+  .release-card { padding:24px 21px; border-radius:21px; }
+  .release-app strong { font-size:24px; }
+  .release-app small { font-size:8px; }
+  .release-status { font-size:8px; }
+  .google-play-link { padding:15px; }
+  .google-play-link strong { font-size:16px; }
+  .release-link-note { font-size:9px; }
+  .week-days .app-day { min-height:66px; font-size:16px; }
+  .journey-detail>a.button { margin-left:0; width:100%; font-size:10px; }
+}
+@media(max-width:370px) {
+  .download-layout { padding-inline:20px; }
+  .download-copy h2 { font-size:38px; }
+  .release-card { padding-inline:18px; }
+  .release-app strong { font-size:22px; }
+}
+@media(prefers-reduced-motion:reduce) { .google-play-link { transition:none; } }

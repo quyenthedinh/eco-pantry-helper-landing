@@ -66,18 +66,7 @@ document.getElementById('feedback-download').addEventListener('click', () => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 
-// Give the product walkthrough a direct path to the feedback section.
-const demoBody = document.querySelector('#demo-dialog .dialog-body');
-const demoFeedback = document.createElement('button');
-demoFeedback.type = 'button';
-demoFeedback.className = 'demo-feedback-link';
-demoFeedback.textContent = 'Bạn thấy trải nghiệm thế nào? Góp ý cùng bếp nhà';
-demoFeedback.addEventListener('click', () => {
-  document.getElementById('demo-dialog').close();
-  document.getElementById('gop-y').scrollIntoView({ behavior: 'instant', block: 'start' });
-  radios[0].focus({ preventScroll: true });
-});
-demoBody.append(demoFeedback);
+// The marketing feedback form stays local-only as requested.
 const footerLink = document.createElement('a');
 footerLink.href = '#gop-y';
 footerLink.textContent = 'Góp ý';
