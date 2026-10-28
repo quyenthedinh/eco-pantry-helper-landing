@@ -19,8 +19,12 @@ menuButton.addEventListener('click', () => {
   menuButton.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
 });
 $$('a', mobileNav).forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-window.matchMedia('(min-width: 901px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+$$('[data-close-mobile]', mobileNav).forEach(button => button.addEventListener('click', closeMenu));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); }
+});
+document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closeMenu(); });
+window.matchMedia('(min-width: 1041px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
 // Accessible feature tabs: click, arrow keys, Home and End.
 const featureTabs = $$('.feature-tabs [role="tab"]');

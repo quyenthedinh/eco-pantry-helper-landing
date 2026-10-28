@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;450;500;550;600;650;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="polish.css" />
+    <link rel="stylesheet" href="header.css" />
     <script src="main.js" type="module"></script>
     <script src="feedback.js" type="module"></script>
   </head>
@@ -56,11 +57,19 @@
     <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="#" aria-label="Eco-Pantry Helper — Trang chủ"><span class="brand-mark"><svg class="icon"><use href="#i-brand"/></svg></span><span>eco-pantry<span class="brand-sub">HELPER</span></span></a>
-        <nav class="desktop-nav" aria-label="Điều hướng chính"><a href="#tinh-nang">Tính năng</a><a href="#cach-hoat-dong">Cách hoạt động</a><a href="#bang-gia">Bảng giá</a><a href="#gop-y">Góp ý</a><a href="#cau-hoi">Câu hỏi thường gặp</a></nav>
-        <div class="header-actions"><button class="button button-small" data-open-demo>Khám phá ứng dụng <svg class="icon"><use href="#i-up-right"/></svg></button><button class="menu-button" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-nav"><svg class="icon"><use href="#i-menu"/></svg></button></div>
+        <a class="brand header-brand" href="#" aria-label="Eco-Pantry Helper — Trang chủ"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-brand"/></svg></span><span>eco-pantry<span class="brand-sub">NGƯỜI BẠN CỦA BẾP NHÀ</span></span></a>
+        <nav class="desktop-nav" aria-label="Điều hướng chính"><a href="#tinh-nang">Tính năng</a><a href="#cach-hoat-dong">Cách sử dụng</a><a href="#bang-gia">Bảng giá</a><a href="#gop-y">Góp ý</a><a href="#cau-hoi">Hỏi đáp</a></nav>
+        <div class="header-actions"><button class="header-about" data-open-about aria-label="Về dự án Eco-Pantry Helper"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span>Về dự án</span></button><button class="button button-small header-cta" data-open-demo aria-label="Trải nghiệm ứng dụng Eco-Pantry"><span class="cta-label-wide">Trải nghiệm ngay</span><span class="cta-label-short" aria-hidden="true">Thử ngay</span><span class="cta-arrow"><svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg></span></button><button class="menu-button" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-nav"><span class="menu-lines" aria-hidden="true"></span></button></div>
       </div>
-      <nav id="mobile-nav" class="mobile-nav" aria-label="Điều hướng di động" hidden><a href="#tinh-nang">Tính năng</a><a href="#cach-hoat-dong">Cách hoạt động</a><a href="#bang-gia">Bảng giá</a><a href="#gop-y">Góp ý</a><a href="#cau-hoi">Câu hỏi thường gặp</a></nav>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Điều hướng di động" hidden>
+        <div class="mobile-menu-intro"><span class="eyebrow">MỘT VÒNG KHÁM PHÁ BẾP NHÀ</span><p>Bạn muốn bắt đầu từ đâu?</p></div>
+        <a href="#tinh-nang"><span class="mobile-link-icon"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg></span><span><strong>Tính năng</strong><small>Dọn tủ AI, thực đơn và đi chợ</small></span><svg class="icon menu-link-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a href="#cach-hoat-dong"><span class="mobile-link-icon"><svg class="icon" aria-hidden="true"><use href="#i-pot"/></svg></span><span><strong>Cách sử dụng</strong><small>Bắt đầu với ba bước đơn giản</small></span><svg class="icon menu-link-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a href="#bang-gia"><span class="mobile-link-icon"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg></span><span><strong>Bảng giá</strong><small>Chọn gói vừa với bếp nhà</small></span><svg class="icon menu-link-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a href="#gop-y"><span class="mobile-link-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg></span><span><strong>Góp ý</strong><small>Chia sẻ trải nghiệm của bạn</small></span><svg class="icon menu-link-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a href="#cau-hoi"><span class="mobile-link-icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><span><strong>Hỏi đáp</strong><small>Những điều bạn muốn biết thêm</small></span><svg class="icon menu-link-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <div class="mobile-menu-footer"><span>Bếp gọn. Bữa ngon.</span><button type="button" data-open-about data-close-mobile>Về dự án <svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg></button></div>
+      </nav>
     </header>
 
     <main id="noi-dung">
