@@ -23,7 +23,9 @@ npm run build
 
 - `index.html`: nội dung, điều hướng, SVG icons, thông tin SEO.
 - `styles.css`: hệ màu dự án, typography, responsive và reduced motion.
+- `polish.css`: bố cục mềm hơn, menu nổi, thẻ lệch nhẹ, khung ảnh tự nhiên, hover và responsive; sử dụng lại bảng màu hiện có.
 - `main.js`: menu di động, tab tính năng, chu kỳ giá, thực đơn mẫu và các modal.
+- `motion.js`: hiệu ứng cuộn, đánh dấu mục đang đọc, nút về đầu trang, FAQ và phần khám phá từng bước; tôn trọng tùy chọn giảm chuyển động của thiết bị.
 - `feedback.js`: chọn 1–5 sao, kiểm tra nội dung, xem lại/sửa/tải bản nháp góp ý. Chưa gửi hoặc lưu phản hồi trực tuyến.
 - `assets/bua-com-viet.webp`: ảnh bữa cơm Việt được tạo riêng bằng công cụ ImageGen tích hợp.
 - `scripts/`: development server và build không có dependency.

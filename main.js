@@ -1,3 +1,5 @@
+import { enhanceExperience } from './motion.js';
+
 const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
@@ -245,7 +247,9 @@ if ('IntersectionObserver' in window && !reducedMotion) {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.08 });
-  $$('.section-heading, .problem-grid article, .center-heading, .journey article, .little-grid article, .price-card').forEach(element => {
+  $$('.section-heading, .center-heading, .price-card').forEach(element => {
     element.classList.add('reveal'); observer.observe(element);
   });
 }
+
+enhanceExperience({ openDemo });
