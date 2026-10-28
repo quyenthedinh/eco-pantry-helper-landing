@@ -23,6 +23,8 @@ Bộ chọn giá tháng/năm dùng radio HTML và CSS, nên vẫn chuyển giữ
 
 Bộ chọn giới thiệu “Dọn tủ bằng AI / Thực đơn & đi chợ” cũng dùng radio HTML và CSS, hỗ trợ bấm, chạm và phím mũi tên khi JavaScript bị chặn. Các nút khám phá hành trình chọn cùng điều khiển này.
 
+Phần `#quet-hoa-don` giới thiệu tính năng hỗ trợ nhập thực phẩm trong app: chụp hóa đơn bằng camera, chọn ảnh có sẵn hoặc nhập tay, xem lại thông tin trước khi thêm vào tủ. Hạn mức theo tài liệu dự án: miễn phí 3 lượt/tuần, Premium không giới hạn. Hóa đơn trên landing page là dữ liệu minh họa; website không mở camera, nhận file hay xử lý hóa đơn.
+
 ## Cấu trúc
 
 - `index.html`: nội dung, điều hướng, SVG icons, thông tin SEO.
