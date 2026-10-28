@@ -24,6 +24,7 @@ npm run build
 - `index.html`: nội dung, điều hướng, SVG icons, thông tin SEO.
 - `styles.css`: hệ màu dự án, typography, responsive và reduced motion.
 - `main.js`: menu di động, tab tính năng, chu kỳ giá, thực đơn mẫu và các modal.
+- `feedback.js`: chọn 1–5 sao, kiểm tra nội dung, xem lại/sửa/tải bản nháp góp ý. Chưa gửi hoặc lưu phản hồi trực tuyến.
 - `assets/bua-com-viet.webp`: ảnh bữa cơm Việt được tạo riêng bằng công cụ ImageGen tích hợp.
 - `scripts/`: development server và build không có dependency.
 
@@ -33,6 +34,7 @@ npm run build
 - Thực đơn minh họa: chọn 3/5/7 ngày, cộng nguyên liệu và trừ tồn kho mẫu, tick món đã mua, bắt buộc chọn ngăn cho thịt/cá, rồi cất các món đã chọn. Món chưa mua được giữ trên danh sách mẫu.
 - Bảng giá: 39.000đ/tháng hoặc 299.000đ/năm; giảm khoảng 36% so với 12 tháng mua riêng.
 - FAQ và thông tin Premium/dự án.
+- Mục góp ý `#gop-y`, lối vào từ menu và bản trải nghiệm. Bản hiện tại chỉ xem trước/tải bản nháp trên thiết bị, không thu thập phản hồi lên máy chủ. Hướng dẫn hoàn tất tiêu chí nằm ở `docs/G1.3-feedback-evidence.md`.
 
 Các trải nghiệm được ghi rõ là dữ liệu mẫu, chỉ nằm trong bộ nhớ. Không gọi Gemini, Supabase hoặc PayOS; không thu dữ liệu khách, không xử lý thanh toán. Chưa có link tải thật được cung cấp, nên CTA dẫn đến trải nghiệm mẫu thay vì dựng link App Store hoặc Google Play giả.
 
