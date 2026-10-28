@@ -53,8 +53,14 @@ html { scroll-padding-top: 112px; }
 .problem-answer { margin-top:21px; padding-top:17px; border-top:1px solid var(--line); font-size:9px; gap:8px; }
 .features-section { margin:24px 18px 0; border:0; border-radius:56px; padding-block:94px; }
 .feature-tabs { border-radius:999px; padding:6px; gap:6px; margin-block:34px 42px; }
-.feature-tabs button { border-radius:999px; padding-inline:28px; transition:background .3s,color .3s,box-shadow .3s; }
-.feature-tabs button[aria-selected=true] { box-shadow:0 4px 10px color-mix(in srgb,var(--forest) 14%,transparent); }
+.feature-tabs label { position:relative; cursor:pointer; border-radius:999px; padding-inline:28px; transition:background .3s,color .3s,box-shadow .3s; }
+.feature-tabs input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+.feature-tabs label:has(input:focus-visible) { outline:2px solid var(--forest); outline-offset:3px; }
+/* Native radio selection keeps feature navigation usable before scripts load. */
+#panel-planning { display:none; }
+.features-section:has(#tab-planning:checked) #panel-pantry { display:none; }
+.features-section:has(#tab-planning:checked) #panel-planning { display:grid; }
+.feature-tabs label:has(input:checked) { box-shadow:0 4px 10px color-mix(in srgb,var(--forest) 14%,transparent); }
 .feature-panel { border-radius:32px; padding:56px; gap:65px; animation:panel-arrive .5s var(--ease-out); }
 .feature-copy h3 { font-size:48px; line-height:1.1; }
 .feature-steps li>span { width:29px; height:29px; background:var(--paper); border-color:transparent; }
@@ -281,7 +287,7 @@ dialog::backdrop { animation:backdrop-arrive .3s ease-out; }
   .features-section>.container { width:calc(100% - 28px); }
   .features-section .center-heading h2 { font-size:45px; }
   .feature-tabs { margin-block:26px; gap:3px; padding:4px; }
-  .feature-tabs button { font-size:9px; padding:11px 9px; gap:7px; }
+  .feature-tabs label { font-size:9px; padding:11px 9px; gap:7px; }
   .feature-panel { border-radius:25px; padding:29px 23px; gap:29px; }
   .feature-copy h3 { font-size:39px; }
   .feature-copy>p { font-size:12px; }
@@ -348,7 +354,7 @@ dialog::backdrop { animation:backdrop-arrive .3s ease-out; }
   .round-seal { width:82px; height:82px; bottom:64px; }
   .feature-panel { padding-inline:20px; }
   .feature-copy h3 { font-size:35px; }
-  .feature-tabs button { font-size:8px; }
+  .feature-tabs label { font-size:8px; }
   .problem-grid article { padding:23px; }
   .problem-grid h3 { font-size:28px; }
   .problem-answer { font-size:9px; }

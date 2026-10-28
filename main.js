@@ -27,29 +27,6 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closeMenu(); });
 window.matchMedia('(min-width: 1041px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
-// Accessible feature tabs: click, arrow keys, Home and End.
-const featureTabs = $$('.feature-tabs [role="tab"]');
-function activateTab(tab, focus = false) {
-  featureTabs.forEach(item => {
-    const active = item === tab;
-    item.setAttribute('aria-selected', String(active));
-    item.tabIndex = active ? 0 : -1;
-    document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
-  });
-  if (focus) tab.focus();
-}
-featureTabs.forEach((tab, index) => {
-  tab.addEventListener('click', () => activateTab(tab));
-  tab.addEventListener('keydown', event => {
-    let next;
-    if (event.key === 'ArrowRight') next = (index + 1) % featureTabs.length;
-    if (event.key === 'ArrowLeft') next = (index - 1 + featureTabs.length) % featureTabs.length;
-    if (event.key === 'Home') next = 0;
-    if (event.key === 'End') next = featureTabs.length - 1;
-    if (next !== undefined) { event.preventDefault(); activateTab(featureTabs[next], true); }
-  });
-});
-
 // Informational dialogs only: application features run in the mobile app.
 const infoDialog = $('#info-dialog');
 let infoTrigger;

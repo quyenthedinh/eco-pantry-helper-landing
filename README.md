@@ -21,6 +21,8 @@ npm run build
 
 Bộ chọn giá tháng/năm dùng radio HTML và CSS, nên vẫn chuyển giữa 39.000đ/tháng và 299.000đ/năm khi JavaScript chưa tải hoặc bị chặn. Thông tin Premium trong hộp thoại đọc trực tiếp gói đang chọn.
 
+Bộ chọn giới thiệu “Dọn tủ bằng AI / Thực đơn & đi chợ” cũng dùng radio HTML và CSS, hỗ trợ bấm, chạm và phím mũi tên khi JavaScript bị chặn. Các nút khám phá hành trình chọn cùng điều khiển này.
+
 ## Cấu trúc
 
 - `index.html`: nội dung, điều hướng, SVG icons, thông tin SEO.
