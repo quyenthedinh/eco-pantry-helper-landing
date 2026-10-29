@@ -66,7 +66,8 @@ if ('IntersectionObserver' in window && !reducedMotion) {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.08 });
-  $$('.section-heading, .center-heading, .price-card').forEach(element => {
+  // Headings rise line by line in motion.js; only the plan cards fade in here.
+  $$('.price-card').forEach(element => {
     element.classList.add('reveal'); observer.observe(element);
   });
 }
