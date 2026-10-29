@@ -211,7 +211,11 @@ function authorMotion(reduced) {
       if (!heading.closest('.hero, .phone-content, .feedback-preview')) headingObserver.observe(heading);
     });
 
-    // 3. How it works: the arrows between steps draw themselves once.
+    // 3. Receipt scan: the beam and the recognised-item chips only run while the section is visible.
+    const scan = document.querySelector('.receipt-illustration');
+    if (scan) new IntersectionObserver(([entry]) => scan.classList.toggle('is-scanning', entry.isIntersecting), { threshold: .35 }).observe(scan);
+
+    // 4. How it works: the arrows between steps draw themselves once.
     const journey = document.querySelector('.journey');
     if (journey) {
       journey.classList.add('motion-ready');
@@ -224,17 +228,6 @@ function authorMotion(reduced) {
     }
   }
 
-  // 4. Benefit band becomes a slow ticker; clones are hidden from assistive tech.
-  const ticker = document.querySelector('.benefit-band');
-  const band = ticker?.querySelector('.benefit-inner');
-  if (band) {
-    for (const child of [...band.children]) {
-      const clone = child.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      band.append(clone);
-    }
-    ticker.classList.add('is-ticker');
-  }
 
   // 5. Scroll-linked depth: the photo drifts slower than the phone, the seal turns,
   //    the closing photo pushes in as the download scene passes.

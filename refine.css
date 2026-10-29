@@ -40,7 +40,6 @@ html:not(#_) body :is(.hero-note, .hero-release-note, .problem-answer, .receipt-
   .feedback-preview-notice, .feedback-receipt dt, .preview-caption, figcaption, .footer-bottom, .footer-top > div > p,
   .premium-label, .plan-name, .feature-kicker, .billing-switch label span, .price-amount small) { font-size: 12.5px; }
 html:not(#_) body :is(.release-link-note, .feedback-required-note, .field-error) { font-size: 12px; }
-html:not(#_) body .benefit-inner > span:not(.band-separator) { font-size: 14px; }
 html:not(#_) body :is(.shopping-note strong, .receipt-result strong, .daily-menu strong) { font-size: 13.5px; }
 html:not(#_) body :is(.shopping-note p, .receipt-result p, .daily-menu span, .floating-note span) { font-size: 12px; }
 html:not(#_) body .round-seal span { font-size: 8.5px; letter-spacing: .08em; }
@@ -60,11 +59,6 @@ html:not(#_) body .problem-grid article { padding-top: 34px; }
 /* Coming-soon store badge: honest, not a dead link to the generic store. */
 .play-badge-link[data-coming-soon] { position: relative; }
 .play-badge-link[data-coming-soon] img { filter: saturate(.9); }
-.play-badge-link[data-coming-soon]::after {
-  content: "Sắp ra mắt"; position: absolute; top: -9px; right: -10px; padding: 3px 9px; border-radius: 6px;
-  background: var(--orange); color: var(--paper); font: 600 11px/1.4 var(--sans); letter-spacing: .01em;
-  box-shadow: 0 4px 10px color-mix(in srgb, var(--orange) 35%, transparent);
-}
 
 /* ── Hero: one authored entrance (motion.js) ──────────────────── */
 .line-mask { display: block; overflow: clip; padding-bottom: .06em; margin-bottom: -.06em; }
@@ -74,11 +68,6 @@ html:not(#_) body .problem-grid article { padding-top: 34px; }
 .round-seal { transform: rotate(var(--seal-rotate, 12deg)); }
 .signal-bars { width: 13px; height: 9px; fill: currentColor; vertical-align: -1px; }
 
-/* ── Benefit band becomes a slow, pausable ticker ─────────────── */
-.benefit-band.is-ticker { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.benefit-band.is-ticker .benefit-inner { display: flex; width: max-content; justify-content: flex-start; gap: 46px; padding-inline: 23px; animation: ticker 42s linear infinite; }
-.benefit-band.is-ticker:hover .benefit-inner, .benefit-band.is-ticker:focus-within .benefit-inner { animation-play-state: paused; }
-@keyframes ticker { to { transform: translateX(-50%); } }
 
 /* ── Cursor spotlight on interactive surfaces (fine pointers only) ─ */
 .has-spotlight { background-image: radial-gradient(420px circle at var(--mx, 50%) var(--my, -30%), rgb(255 255 255 / .55), transparent 42%); }
@@ -113,14 +102,12 @@ html:not(#_) body .problem-grid article { padding-top: 34px; }
   html:not(#_) body :is(.desktop-nav a, .header-about, .text-link, .text-button, .button, .feedback-edit, .footer-link,
     .site-footer nav a, .receipt-inline-link, .journey-select) { font-size: 13px; }
   html:not(#_) body .header-actions .button { font-size: 12px; }
-  html:not(#_) body .benefit-inner > span:not(.band-separator) { font-size: 13px; }
   html:not(#_) body .problem-grid article { display: block; padding-top: 22px; }
   .site-footer nav { flex-wrap: wrap; row-gap: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body::after { display: none; }
-  .benefit-band.is-ticker .benefit-inner { animation: none; }
   .journey-arrow { clip-path: none; transition: none; }
   .download-backdrop { transform: none; }
 }
@@ -134,3 +121,110 @@ html:not(#_) body .feedback-preview blockquote { border-left: 0; border-radius: 
 
 /* Download scene: one status line until the app is live */
 .release-link-note:empty { display: none; }
+
+/* ── Benefit strip: four quiet promises on the page's own paper ── */
+html:not(#_) body .benefit-band {
+  width: min(1220px, calc(100% - 112px)); margin: 18px auto 0; padding: 0;
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 24px;
+  box-shadow: 0 18px 40px -28px color-mix(in srgb, var(--forest) 45%, transparent);
+}
+html:not(#_) body .benefit-inner {
+  width: 100%; min-height: 0; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0;
+}
+.benefit-item { display: flex; align-items: center; gap: 15px; padding: 24px 26px; min-width: 0; }
+.benefit-item + .benefit-item { border-left: 1px solid var(--line); }
+.benefit-icon {
+  display: grid; place-items: center; flex-shrink: 0; width: 46px; height: 46px; border-radius: 14px;
+  background: var(--sage); color: var(--forest);
+  transition: background-color .3s var(--ease-out-expo), color .3s var(--ease-out-expo), transform .3s var(--ease-out-expo);
+}
+.benefit-icon .icon { width: 22px; height: 22px; }
+.benefit-item strong { display: block; font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--ink); }
+.benefit-item small { display: block; margin-top: 3px; font-size: 13px; line-height: 1.45; color: var(--muted); }
+.benefit-item:hover .benefit-icon { background: var(--forest); color: var(--paper); transform: rotate(-6deg); }
+
+/* ── Receipt scan: a beam reads the receipt, recognised items get tagged ── */
+html:not(#_) body .receipt-illustration {
+  background:
+    radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--paper) 70%, transparent), transparent 60%),
+    radial-gradient(color-mix(in srgb, var(--forest) 14%, transparent) 1px, transparent 1.4px) 0 0 / 18px 18px,
+    var(--sage);
+  border-color: color-mix(in srgb, var(--forest) 14%, transparent);
+  box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--forest) 55%, transparent);
+}
+html:not(#_) body .receipt-visual-header > span { font-size: 12px; letter-spacing: .04em; }
+html:not(#_) body .receipt-visual-header > small { font-size: 11px; background: var(--paper); }
+.receipt-scan-corner { opacity: .9; border-width: 2px; width: 30px; height: 30px; }
+.receipt-scan-beam { position: absolute; inset: 0; overflow: hidden; border-radius: 12px; pointer-events: none; z-index: 2; }
+.receipt-scan-beam > span {
+  position: absolute; inset: 0; transform: translateY(-100%); opacity: 0;
+  background: linear-gradient(180deg, transparent 0 62%, color-mix(in srgb, var(--forest) 10%, transparent) 90%, color-mix(in srgb, var(--forest) 70%, transparent) 99%, transparent 100%);
+}
+.receipt-paper { position: relative; z-index: 1; box-shadow: 0 24px 40px -20px color-mix(in srgb, var(--forest) 40%, transparent), 0 2px 6px color-mix(in srgb, var(--forest) 8%, transparent); }
+html:not(#_) body .receipt-paper-row { align-items: flex-start; font-size: 13.5px; }
+html:not(#_) body .receipt-paper-row > span:first-child { text-align: left; }
+.receipt-chip {
+  display: flex; align-items: center; gap: 4px; width: max-content; margin-top: 3px;
+  padding: 1px 8px 1px 5px; border-radius: 6px; background: var(--sage); color: var(--forest);
+  font-size: 11px; font-weight: 500; line-height: 1.6;
+}
+.receipt-chip .icon { width: 12px; height: 12px; stroke-width: 2.2; }
+html:not(#_) body .receipt-result {
+  background: var(--forest); border-color: var(--forest); color: var(--paper);
+  box-shadow: 0 18px 30px -18px color-mix(in srgb, var(--forest) 70%, transparent);
+}
+html:not(#_) body .receipt-result strong { color: var(--paper); }
+html:not(#_) body .receipt-result p { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+html:not(#_) body .receipt-result-icon { background: color-mix(in srgb, var(--paper) 16%, transparent); color: var(--paper); }
+html:not(#_) body .receipt-result > .icon { color: var(--paper); }
+
+.is-scanning .receipt-scan-beam > span { animation: receipt-beam 4.8s var(--ease-out-expo) infinite; }
+.is-scanning .receipt-chip { animation: receipt-chip 4.8s var(--ease-out-expo) infinite both; }
+.is-scanning .receipt-paper-row:nth-of-type(2) .receipt-chip { animation-delay: .18s; }
+.is-scanning .receipt-paper-row:nth-of-type(3) .receipt-chip { animation-delay: .36s; }
+.is-scanning .receipt-result { animation: receipt-result 4.8s var(--ease-out-expo) infinite both; }
+@keyframes receipt-beam {
+  0% { transform: translateY(-100%); opacity: 0; }
+  6% { opacity: 1; }
+  38% { transform: translateY(100%); opacity: 1; }
+  44%, 100% { transform: translateY(100%); opacity: 0; }
+}
+@keyframes receipt-chip {
+  0%, 22% { opacity: 0; transform: translateX(-6px); }
+  34%, 88% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: none; }
+}
+@keyframes receipt-result {
+  0%, 40% { transform: none; }
+  48% { transform: translateY(-4px); }
+  58%, 100% { transform: none; }
+}
+
+/* Left column: steps read as a path, limits as two clear facts */
+.receipt-steps { position: relative; }
+.receipt-steps::before {
+  content: ""; position: absolute; left: 15px; top: 18px; bottom: 18px; width: 1px;
+  background: linear-gradient(var(--forest), color-mix(in srgb, var(--forest) 15%, transparent));
+}
+html:not(#_) body .receipt-steps li > span { position: relative; background: var(--forest); color: var(--paper); font-size: 12px; font-weight: 600; box-shadow: 0 0 0 5px var(--cream); }
+html:not(#_) body .receipt-limits { border-top: 0; padding-top: 0; gap: 10px; }
+html:not(#_) body .receipt-limits > span {
+  padding: 9px 14px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); font-size: 13px;
+}
+
+@media (max-width: 1040px) {
+  html:not(#_) body .benefit-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .benefit-item:nth-child(3) { border-left: 0; }
+  .benefit-item:nth-child(n + 3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 680px) {
+  html:not(#_) body .benefit-band { width: calc(100% - 40px); border-radius: 20px; }
+  .benefit-item { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 16px; }
+  .benefit-icon { width: 40px; height: 40px; border-radius: 12px; }
+  .benefit-item strong { font-size: 14px; }
+  .benefit-item small { font-size: 12.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-scanning .receipt-scan-beam > span, .is-scanning .receipt-chip, .is-scanning .receipt-result { animation: none; }
+}
