@@ -1,6 +1,6 @@
 # Eco-Pantry Helper — Landing page
 
-Landing page tiếng Việt giới thiệu ứng dụng của nhóm, theo tài liệu tổng quan và tab DATA ngày 25/10/2026. Website chỉ dùng để giới thiệu và marketing cho ứng dụng di động, hướng người xem sang Google Play. Không cung cấp phiên bản web hoặc luồng dùng thử app. Dashboard phân tích thuộc sản phẩm nội bộ, không triển khai trên website này.
+Landing page tiếng Việt giới thiệu ứng dụng của nhóm, theo tài liệu tổng quan và tab DATA ngày 25/10/2026. Website chỉ dùng để giới thiệu và marketing cho ứng dụng di động, cho phép người xem tải bản APK dùng thử trên Android, trong khi app chưa phát hành trên CH Play. Không cung cấp phiên bản web hoặc luồng dùng thử app. Dashboard phân tích thuộc sản phẩm nội bộ, không triển khai trên website này.
 
 ## Mở và chạy trong VS Code
 
@@ -71,7 +71,7 @@ npm.cmd run build
 - `polish.css`: bố cục mềm hơn, menu nổi, thẻ lệch nhẹ, khung ảnh tự nhiên, hover và responsive; sử dụng lại bảng màu hiện có.
 - `header.css`: header ba cụm logo/menu/CTA theo bố cục tham khảo WeDo; menu điện thoại có biểu tượng, mô tả, đóng bằng Escape hoặc bấm bên ngoài.
 - `main.js`: menu và hộp thông tin dự án/Premium; bộ chọn tính năng và giá dùng radio HTML/CSS.
-- `app-release.js`: cấu hình link Google Play chính thức và link cửa hàng thử nghiệm.
+- `app-release.js`: cấu hình đường dẫn APK, dung lượng và link Google Play chính thức khi phát hành.
 - `marketing.css`: bố cục phần tải app và giao diện minh họa tĩnh.
 - `typography.css`: thu gọn khoảng cách chữ, giữ phông chữ cũ.
 - `receipt.css`: phần giới thiệu quét hóa đơn.
@@ -85,16 +85,30 @@ npm.cmd run build
 
 - Giới thiệu Dọn tủ AI và thực đơn → đi chợ → cất tủ bằng nội dung và hình minh họa tĩnh.
 - Các tab, FAQ và phần hướng dẫn tương tác chỉ phục vụ việc đọc thông tin trên landing page.
-- Các CTA tải app dẫn tới `#tai-ung-dung` khi chưa có link app chính thức.
-- Google Play đang dùng link tạm `https://play.google.com/store/apps`, được ghi rõ là cửa hàng chung, chưa phải trang app.
+- Nút “Tải APK dùng thử” ở đầu trang và phần tải app tải file thật `assets/downloads/Eco-Pantry.apk`. Các CTA giới thiệu tính năng dẫn tới `#tai-ung-dung` để người xem đọc hướng dẫn cài đặt.
+- App chưa phát hành trên CH Play; đã bỏ link cửa hàng chung và huy hiệu Google Play khỏi giao diện đang hiển thị.
+- Hướng dẫn cài APK chỉ dành cho Android; người dùng máy tính được hướng dẫn mở trang trên điện thoại.
 - Giá Premium là thông tin giới thiệu; đăng ký và thanh toán thực hiện trong ứng dụng di động.
 - Mục góp ý vẫn là giao diện xem lại/tải bản nháp trên thiết bị, chưa thu thập dữ liệu như người dùng đã chọn.
 
 Không có chức năng chọn nguyên liệu, gợi ý món, lập thực đơn, đi chợ hoặc cập nhật tủ chạy trên website. Không gọi Gemini, Supabase hay PayOS.
 
+## Fanpage dự án
+
+Fanpage chính thức do nhóm cung cấp: https://www.facebook.com/profile.php?id=61595234126584. Liên kết nằm ở thẻ giới thiệu cộng đồng sau phần tải app và chân trang, mở tab mới. Đây là liên kết trực tiếp; không nhúng Facebook SDK hoặc pixel. Logo `assets/facebook-logo.png` là file Primary Logo nguyên gốc trong Facebook Brand Asset Pack tải từ https://www.meta.com/brand/resources/facebook/logo/; giữ nguyên màu xanh, chữ f trắng và tỉ lệ ảnh.
+
+## Bản APK dùng thử
+
+- File nhóm cung cấp: `assets/downloads/Eco-Pantry.apk` (60.383.747 byte, khoảng 60,4 MB).
+- Bản build tự sao chép APK vào `dist/assets/downloads/Eco-Pantry.apk`. Khi đưa lên hosting cần giữ nguyên file này cùng cấu trúc thư mục, hoặc đặt `APP_RELEASE.apkUrl` thành URL HTTPS tải APK thật.
+- Localhost phục vụ APK dưới dạng file tải về, có đúng MIME type, tên file và dung lượng; truyền file theo luồng để tránh nạp toàn bộ APK vào bộ nhớ cho mỗi lượt tải.
+- Thay bản APK: ghi đè file, cập nhật `APP_RELEASE.apkSizeBytes` và dung lượng dự phòng trong `index.html`, rồi chạy check/build lại.
+- File APK lớn hơn 25 MiB. Nếu hosting có giới hạn file tĩnh 25 MiB, cần lưu APK trên dịch vụ lưu file hoặc trang phát hành hỗ trợ dung lượng này, rồi cập nhật `APP_RELEASE.apkUrl` trước khi triển khai. Mã nguồn hiện dùng file cùng website; chưa tạo URL lưu trữ công khai riêng cho APK.
+- Kiểm tra file bằng SHA-256: `Get-FileHash assets/downloads/Eco-Pantry.apk -Algorithm SHA256`.
+
 ## Cập nhật link Google Play khi phát hành
 
-Mở `app-release.js`, gán link chính thức dạng `https://play.google.com/store/apps/details?id=...` vào `APP_RELEASE.officialGooglePlayUrl`. Chỉ dùng package ID thật do nhóm cung cấp. Khi cấu hình hợp lệ, website tự cập nhật trạng thái phát hành, nút Google Play và các CTA tải app. Để trống khi chưa có: trang giữ nhãn “Sắp có trên Google Play” và thông báo liên kết thử nghiệm.
+Mở `app-release.js`, gán link chính thức dạng `https://play.google.com/store/apps/details?id=...` vào `APP_RELEASE.officialGooglePlayUrl`. Chỉ dùng package ID thật do nhóm cung cấp. Khi cấu hình hợp lệ, website tự cập nhật trạng thái phát hành, nút Google Play và các CTA tải app. Để trống khi chưa có: trang dùng nút tải APK thật và hiện hướng dẫn cài Android. Khi có link Google Play hợp lệ, nút tải tự chuyển sang Google Play và ẩn hướng dẫn cài APK.
 
 ## Nội dung cần thay khi ra mắt
 

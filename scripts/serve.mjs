@@ -1,5 +1,7 @@
 import http from 'node:http';
-import { readFile, stat } from 'node:fs/promises';
+import { createReadStream } from 'node:fs';
+import { stat } from 'node:fs/promises';
+import { pipeline } from 'node:stream/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -19,7 +21,7 @@ if (!/^\d+$/.test(portValue ?? '') || !Number.isInteger(port) || port < 1 || por
   console.error('Cổng không hợp lệ. Hãy chọn số từ 1 đến 65535, ví dụ: npm run dev -- --port 5174');
   process.exit(1);
 }
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.ico': 'image/x-icon' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.apk': 'application/vnd.android.package-archive' };
 const publicFiles = new Set(['index.html', 'styles.css', 'polish.css', 'header.css', 'marketing.css', 'typography.css', 'receipt.css', 'main.js', 'motion.js', 'feedback.js', 'app-release.js']);
 
 const server = http.createServer(async (req, res) => {
@@ -35,11 +37,17 @@ const server = http.createServer(async (req, res) => {
     const target = path.resolve(root, relative);
     const assetPath = path.relative(path.join(root, 'assets'), target);
     const isAsset = relative.startsWith('assets/') && assetPath !== '..' && !assetPath.startsWith(`..${path.sep}`) && !path.isAbsolute(assetPath);
-    if ((!publicFiles.has(relative) && !isAsset) || !(await stat(target)).isFile()) throw new Error('Not found');
-    const body = await readFile(target);
-    res.writeHead(200, { 'Content-Type': types[path.extname(target)] || 'application/octet-stream', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
-    res.end(req.method === 'HEAD' ? undefined : body);
+    if (!publicFiles.has(relative) && !isAsset) throw new Error('Not found');
+    const file = await stat(target);
+    if (!file.isFile()) throw new Error('Not found');
+    const extension = path.extname(target);
+    const headers = { 'Content-Type': types[extension] || 'application/octet-stream', 'Content-Length': file.size, 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' };
+    if (extension === '.apk') headers['Content-Disposition'] = 'attachment; filename="Eco-Pantry.apk"';
+    res.writeHead(200, headers);
+    if (req.method === 'HEAD') res.end();
+    else await pipeline(createReadStream(target), res);
   } catch {
+    if (res.headersSent || res.destroyed) { res.destroy(); return; }
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Không tìm thấy trang.');
   }
