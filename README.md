@@ -100,12 +100,10 @@ Fanpage chính thức do nhóm cung cấp: https://www.facebook.com/profile.php?
 
 ## Bản APK dùng thử
 
-- File nhóm cung cấp: `assets/downloads/Eco-Pantry.apk` (60.383.747 byte, khoảng 60,4 MB).
-- Bản build tự sao chép APK vào `dist/assets/downloads/Eco-Pantry.apk`. Khi đưa lên hosting cần giữ nguyên file này cùng cấu trúc thư mục, hoặc đặt `APP_RELEASE.apkUrl` thành URL HTTPS tải APK thật.
-- Localhost phục vụ APK dưới dạng file tải về, có đúng MIME type, tên file và dung lượng; truyền file theo luồng để tránh nạp toàn bộ APK vào bộ nhớ cho mỗi lượt tải.
-- Thay bản APK: ghi đè file, cập nhật `APP_RELEASE.apkSizeBytes` và dung lượng dự phòng trong `index.html`, rồi chạy check/build lại.
-- File APK lớn hơn 25 MiB. Nếu hosting có giới hạn file tĩnh 25 MiB, cần lưu APK trên dịch vụ lưu file hoặc trang phát hành hỗ trợ dung lượng này, rồi cập nhật `APP_RELEASE.apkUrl` trước khi triển khai. Mã nguồn hiện dùng file cùng website; chưa tạo URL lưu trữ công khai riêng cho APK.
-- Kiểm tra file bằng SHA-256: `Get-FileHash assets/downloads/Eco-Pantry.apk -Algorithm SHA256`.
+- APK nằm ở **GitHub Releases** của repo, không lưu trong thư mục web: https://github.com/quyenthedinh/eco-pantry-helper-landing/releases
+- Nút “Tải APK dùng thử” trỏ tới `https://github.com/quyenthedinh/eco-pantry-helper-landing/releases/latest/download/Eco-Pantry.apk`, luôn là bản phát hành mới nhất.
+- Phát hành APK mới: vào **Releases → Draft a new release**, đặt tag mới (ví dụ `v1.0.1`), đính kèm file **đúng tên `Eco-Pantry.apk`** rồi bấm **Publish release**. Không cần sửa code; chỉ cập nhật `APP_RELEASE.apkSizeBytes` nếu muốn hiện đúng dung lượng.
+- Không commit file `.apk` vào repo: mỗi bản sẽ làm repo nặng thêm và Vercel phải tải lại cả file mỗi lần deploy.
 
 ## Cập nhật link Google Play khi phát hành
 

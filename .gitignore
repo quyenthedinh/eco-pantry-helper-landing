@@ -7,3 +7,6 @@ dist/
 *.log
 .qa/
 /eco-pantry-helper-local.zip
+
+# APK phát hành qua GitHub Releases, không commit vào repo
+*.apk

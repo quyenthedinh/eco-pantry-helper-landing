@@ -1,7 +1,8 @@
 // Keep the team's APK available until its official Google Play listing is ready.
 export const APP_RELEASE = Object.freeze({
   officialGooglePlayUrl: '',
-  apkUrl: 'assets/downloads/Eco-Pantry.apk',
+  // GitHub Releases: link luôn trỏ tới bản phát hành mới nhất, không cần sửa code khi có APK mới.
+  apkUrl: 'https://github.com/quyenthedinh/eco-pantry-helper-landing/releases/latest/download/Eco-Pantry.apk',
   apkFileName: 'Eco-Pantry.apk',
   apkSizeBytes: 60383747,
 });
