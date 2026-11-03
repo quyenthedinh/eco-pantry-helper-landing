@@ -75,9 +75,10 @@ npm.cmd run build
 - `marketing.css`: bố cục phần tải app và giao diện minh họa tĩnh.
 - `typography.css`: thu gọn khoảng cách chữ, giữ phông chữ cũ.
 - `receipt.css`: phần giới thiệu quét hóa đơn.
+- `refine.css`: lớp tinh chỉnh nạp cuối cùng — cỡ chữ đọc được (đoạn văn 15–16px), theme thanh cuộn/vùng chọn chữ, lớp vân giấy nhẹ, ticker dải lợi ích, ánh sáng theo con trỏ trên thẻ, trạng thái “Sắp ra mắt” của nút Google Play.
 - `.vscode/`: tác vụ chạy localhost, build và cấu hình F5 cho Edge/Chrome.
-- `motion.js`: hiệu ứng cuộn, đánh dấu mục đang đọc, nút về đầu trang, FAQ và phần khám phá từng bước; tôn trọng tùy chọn giảm chuyển động của thiết bị.
-- `feedback.js`: chọn 1–5 sao, kiểm tra nội dung, xem lại/sửa/tải bản nháp góp ý. Chưa gửi hoặc lưu phản hồi trực tuyến.
+- `motion.js`: hiệu ứng cuộn, đánh dấu mục đang đọc, nút về đầu trang, FAQ và phần khám phá từng bước. Màn mở đầu: tiêu đề hiện từng dòng, ảnh mâm cơm mở ra, điện thoại trượt lên; tiêu đề các mục hiện từng dòng khi cuộn tới; chiều sâu theo cuộn (ảnh, điện thoại, con dấu, ảnh cuối trang). Nội dung luôn hiển thị nếu script lỗi; tôn trọng tùy chọn giảm chuyển động.
+- `feedback.js`: chọn 1–5 sao, kiểm tra nội dung, xem lại/sửa góp ý rồi gửi bằng ứng dụng email của người xem (mailto, điền sẵn nội dung) hoặc sao chép. Website không lưu hay gửi dữ liệu.
 - `assets/bua-com-viet.webp`: ảnh bữa cơm Việt được tạo riêng bằng công cụ ImageGen tích hợp.
 - `scripts/`: development server và build không có dependency.
 
@@ -89,7 +90,7 @@ npm.cmd run build
 - App chưa phát hành trên CH Play; đã bỏ link cửa hàng chung và huy hiệu Google Play khỏi giao diện đang hiển thị.
 - Hướng dẫn cài APK chỉ dành cho Android; người dùng máy tính được hướng dẫn mở trang trên điện thoại.
 - Giá Premium là thông tin giới thiệu; đăng ký và thanh toán thực hiện trong ứng dụng di động.
-- Mục góp ý vẫn là giao diện xem lại/tải bản nháp trên thiết bị, chưa thu thập dữ liệu như người dùng đã chọn.
+- Mục góp ý không thu thập dữ liệu trên website: người xem gửi qua email của chính họ. Người đã dùng app góp ý trong app (Tài khoản → Góp ý & báo lỗi), dữ liệu lưu ở Supabase.
 
 Không có chức năng chọn nguyên liệu, gợi ý món, lập thực đơn, đi chợ hoặc cập nhật tủ chạy trên website. Không gọi Gemini, Supabase hay PayOS.
 

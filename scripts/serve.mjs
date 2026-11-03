@@ -22,7 +22,7 @@ if (!/^\d+$/.test(portValue ?? '') || !Number.isInteger(port) || port < 1 || por
   process.exit(1);
 }
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.apk': 'application/vnd.android.package-archive' };
-const publicFiles = new Set(['index.html', 'styles.css', 'polish.css', 'header.css', 'marketing.css', 'typography.css', 'receipt.css', 'main.js', 'motion.js', 'feedback.js', 'app-release.js']);
+const publicFiles = new Set(['index.html', 'styles.css', 'polish.css', 'header.css', 'marketing.css', 'typography.css', 'receipt.css', 'refine.css', 'main.js', 'motion.js', 'feedback.js', 'app-release.js']);
 
 const server = http.createServer(async (req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') {

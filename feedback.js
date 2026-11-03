@@ -1,4 +1,4 @@
-// Draft preview only. Nothing is transmitted or persisted in browser storage.
+// Nothing is transmitted or stored by the website; the visitor sends the draft by email.
 const form = document.getElementById('feedback-form');
 const preview = document.getElementById('feedback-preview');
 const message = document.getElementById('feedback-message');
@@ -53,20 +53,43 @@ document.getElementById('feedback-edit').addEventListener('click', () => {
   form.hidden = false;
   message.focus({ preventScroll: true });
 });
-document.getElementById('feedback-download').addEventListener('click', () => {
+// Website keeps nothing: the visitor sends the draft from their own email app.
+const TEAM_EMAIL = 'quyenthedinh@gmail.com';
+function draftText() {
+  return `Đánh giá: ${draft.rating}/5 — ${labels[draft.rating - 1]}
+Nội dung: ${draft.topic}
+Thời gian: ${document.getElementById('feedback-review-time').textContent}
+
+${draft.message}
+`;
+}
+function notify(text) {
+  const toast = document.querySelector('.toast');
+  if (!toast) return;
+  toast.textContent = text;
+  toast.hidden = false;
+  clearTimeout(notify.timer);
+  notify.timer = setTimeout(() => { toast.hidden = true; }, 3200);
+}
+document.getElementById('feedback-send').addEventListener('click', event => {
+  if (!draft) { event.preventDefault(); return; }
+  const subject = `Góp ý landing page Eco-Pantry (${draft.rating}/5)`;
+  event.currentTarget.href = `mailto:${TEAM_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(draftText())}`;
+  notify('Đang mở ứng dụng email. Nếu không thấy, hãy dùng “Sao chép nội dung”.');
+});
+document.getElementById('feedback-copy').addEventListener('click', async () => {
   if (!draft) return;
-  const text = `ECO-PANTRY HELPER — BẢN NHÁP GÓP Ý\nChưa gửi đến nhóm dự án.\n\nĐánh giá: ${draft.rating}/5 — ${labels[draft.rating - 1]}\nNội dung: ${draft.topic}\nThời gian: ${document.getElementById('feedback-review-time').textContent}\n\n${draft.message}\n`;
-  const url = URL.createObjectURL(new Blob(['\uFEFF', text], { type: 'text/plain;charset=utf-8' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `eco-pantry-gop-y-${draft.createdAt.toISOString().slice(0, 10)}.txt`;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  try {
+    await navigator.clipboard.writeText(`Gửi tới: ${TEAM_EMAIL}
+
+${draftText()}`);
+    notify(`Đã sao chép. Dán vào email gửi tới ${TEAM_EMAIL}.`);
+  } catch {
+    notify(`Không sao chép được. Bạn có thể gửi góp ý tới ${TEAM_EMAIL}.`);
+  }
 });
 
-// The marketing feedback form stays local-only as requested.
+// The website itself never collects feedback.
 const footerLink = document.createElement('a');
 footerLink.href = '#gop-y';
 footerLink.textContent = 'Góp ý';
