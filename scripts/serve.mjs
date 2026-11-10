@@ -42,7 +42,7 @@ const server = http.createServer(async (req, res) => {
     if (!file.isFile()) throw new Error('Not found');
     const extension = path.extname(target);
     const headers = { 'Content-Type': types[extension] || 'application/octet-stream', 'Content-Length': file.size, 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' };
-    if (extension === '.apk') headers['Content-Disposition'] = 'attachment; filename="Eco-Pantry.apk"';
+    if (extension === '.apk') headers['Content-Disposition'] = 'attachment; filename="Pantrio.apk"';
     res.writeHead(200, headers);
     if (req.method === 'HEAD') res.end();
     else await pipeline(createReadStream(target), res);
@@ -62,7 +62,7 @@ server.on('error', error => {
   process.exitCode = 1;
 });
 
-console.log('Đang khởi động Eco-Pantry...');
+console.log('Đang khởi động Pantrio...');
 server.listen(port, '127.0.0.1', () => {
   console.log(`Local: http://localhost:${port}`);
   console.log('Giữ terminal này mở. Sửa file, lưu lại rồi tải lại trình duyệt để xem thay đổi.');

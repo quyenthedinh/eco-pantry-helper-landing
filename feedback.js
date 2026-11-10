@@ -73,7 +73,7 @@ function notify(text) {
 }
 document.getElementById('feedback-send').addEventListener('click', event => {
   if (!draft) { event.preventDefault(); return; }
-  const subject = `Góp ý landing page Eco-Pantry (${draft.rating}/5)`;
+  const subject = `Góp ý landing page Pantrio (${draft.rating}/5)`;
   event.currentTarget.href = `mailto:${TEAM_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(draftText())}`;
   notify('Đang mở ứng dụng email. Nếu không thấy, hãy dùng “Sao chép nội dung”.');
 });

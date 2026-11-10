@@ -1,4 +1,4 @@
-/* WeDo-inspired hierarchy, using the existing Eco-Pantry palette. */
+/* WeDo-inspired hierarchy, using the existing Pantrio palette. */
 .site-header {
   padding-block:0;
   background:color-mix(in srgb,var(--cream) 93%,transparent);

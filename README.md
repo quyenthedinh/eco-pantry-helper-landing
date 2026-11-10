@@ -1,4 +1,4 @@
-# Eco-Pantry Helper — Landing page
+# Pantrio — Landing page
 
 Landing page tiếng Việt giới thiệu ứng dụng của nhóm, theo tài liệu tổng quan và tab DATA ngày 25/10/2026. Website chỉ dùng để giới thiệu và marketing cho ứng dụng di động, cho phép người xem tải bản APK dùng thử trên Android, trong khi app chưa phát hành trên CH Play. Không cung cấp phiên bản web hoặc luồng dùng thử app. Dashboard phân tích thuộc sản phẩm nội bộ, không triển khai trên website này.
 
@@ -10,10 +10,10 @@ Yêu cầu: Node.js 20 trở lên và VS Code. Dự án dùng HTML, CSS, JavaScr
 
 1. Giải nén `eco-pantry-helper-local.zip` nếu dùng bản ZIP.
 2. Trong VS Code, chọn **File → Open Folder…** rồi mở thư mục chứa `package.json` và `index.html`.
-3. Nhấn **F5** hoặc mở **Run and Debug**. Chọn **Eco-Pantry: localhost (Edge)** hoặc **Eco-Pantry: localhost (Chrome)**, tùy trình duyệt có trên máy.
+3. Nhấn **F5** hoặc mở **Run and Debug**. Chọn **Pantrio: localhost (Edge)** hoặc **Pantrio: localhost (Chrome)**, tùy trình duyệt có trên máy.
 4. VS Code tự chạy máy chủ và mở **http://localhost:5173**.
 
-Cấu hình đã có trong `.vscode/launch.json` và `.vscode/tasks.json`. Không cần cài extension Live Server. Giữ terminal của tác vụ `Eco-Pantry: localhost` mở trong lúc xem trang.
+Cấu hình đã có trong `.vscode/launch.json` và `.vscode/tasks.json`. Không cần cài extension Live Server. Giữ terminal của tác vụ `Pantrio: localhost` mở trong lúc xem trang.
 
 ### Cách 2: Chạy bằng terminal
 
@@ -86,7 +86,7 @@ npm.cmd run build
 
 - Giới thiệu Dọn tủ AI và thực đơn → đi chợ → cất tủ bằng nội dung và hình minh họa tĩnh.
 - Các tab, FAQ và phần hướng dẫn tương tác chỉ phục vụ việc đọc thông tin trên landing page.
-- Nút “Tải APK dùng thử” ở đầu trang và phần tải app tải file thật `assets/downloads/Eco-Pantry.apk`. Các CTA giới thiệu tính năng dẫn tới `#tai-ung-dung` để người xem đọc hướng dẫn cài đặt.
+- Nút “Tải APK dùng thử” ở đầu trang và phần tải app tải file thật `assets/downloads/Pantrio.apk`. Các CTA giới thiệu tính năng dẫn tới `#tai-ung-dung` để người xem đọc hướng dẫn cài đặt.
 - App chưa phát hành trên CH Play; đã bỏ link cửa hàng chung và huy hiệu Google Play khỏi giao diện đang hiển thị.
 - Hướng dẫn cài APK chỉ dành cho Android; người dùng máy tính được hướng dẫn mở trang trên điện thoại.
 - Giá Premium là thông tin giới thiệu; đăng ký và thanh toán thực hiện trong ứng dụng di động.
@@ -101,8 +101,8 @@ Fanpage chính thức do nhóm cung cấp: https://www.facebook.com/profile.php?
 ## Bản APK dùng thử
 
 - APK nằm ở **GitHub Releases** của repo, không lưu trong thư mục web: https://github.com/quyenthedinh/eco-pantry-helper-landing/releases
-- Nút “Tải APK dùng thử” trỏ tới `https://github.com/quyenthedinh/eco-pantry-helper-landing/releases/latest/download/Eco-Pantry.apk`, luôn là bản phát hành mới nhất.
-- Phát hành APK mới: vào **Releases → Draft a new release**, đặt tag mới (ví dụ `v1.0.1`), đính kèm file **đúng tên `Eco-Pantry.apk`** rồi bấm **Publish release**. Không cần sửa code; chỉ cập nhật `APP_RELEASE.apkSizeBytes` nếu muốn hiện đúng dung lượng.
+- Nút “Tải APK dùng thử” trỏ tới `https://github.com/quyenthedinh/eco-pantry-helper-landing/releases/latest/download/Pantrio.apk`, luôn là bản phát hành mới nhất.
+- Phát hành APK mới: vào **Releases → Draft a new release**, đặt tag mới (ví dụ `v1.0.1`), đính kèm file **đúng tên `Pantrio.apk`** rồi bấm **Publish release**. Không cần sửa code; chỉ cập nhật `APP_RELEASE.apkSizeBytes` nếu muốn hiện đúng dung lượng.
 - Không commit file `.apk` vào repo: mỗi bản sẽ làm repo nặng thêm và Vercel phải tải lại cả file mỗi lần deploy.
 
 ## Cập nhật link Google Play khi phát hành
@@ -118,7 +118,7 @@ Mở `app-release.js`, gán link chính thức dạng `https://play.google.com/s
 
 ## Tham khảo bố cục và cách kể câu chuyện
 
-- Ảnh WEDO do nhóm cung cấp — bố cục tải ứng dụng căn giữa, tiêu đề lớn và huy hiệu cửa hàng. Eco-Pantry chỉ giới thiệu bản Android trên Google Play.
+- Ảnh WEDO do nhóm cung cấp — bố cục tải ứng dụng căn giữa, tiêu đề lớn và huy hiệu cửa hàng. Pantrio chỉ giới thiệu bản Android trên Google Play.
 - Huy hiệu Google Play tiếng Việt: `assets/google-play-badge-vi.png`, tải từ `https://play.google.com/intl/en_us/badges/static/images/badges/vi_badge_web_generic.png`; giữ nguyên hình ảnh, tỉ lệ và khoảng trống của huy hiệu.
 - https://www.grab.com/vn/ — định vị lợi ích và giới thiệu nhóm dịch vụ.
 - https://samsungfood.com/ — kết nối lập thực đơn, nguyên liệu và đi chợ.
