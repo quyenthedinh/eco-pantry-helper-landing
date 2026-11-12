@@ -4,7 +4,7 @@ export const APP_RELEASE = Object.freeze({
   // GitHub Releases: link luôn trỏ tới bản phát hành mới nhất, không cần sửa code khi có APK mới.
   apkUrl: 'https://github.com/quyenthedinh/eco-pantry-helper-landing/releases/latest/download/Pantrio.apk',
   apkFileName: 'Pantrio.apk',
-  apkSizeBytes: 59828115,
+  apkSizeBytes: 59959423,
 });
 
 export function configureDownloadLinks() {
