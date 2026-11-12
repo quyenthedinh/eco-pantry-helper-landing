@@ -228,3 +228,6 @@ html:not(#_) body .receipt-limits > span {
 @media (prefers-reduced-motion: reduce) {
   .is-scanning .receipt-scan-beam > span, .is-scanning .receipt-chip, .is-scanning .receipt-result { animation: none; }
 }
+
+/* Mở app kèm UTM sau khi cài APK (Outcome 3) */
+.open-app-link { margin-top: 22px; gap: 10px; }

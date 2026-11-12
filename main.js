@@ -1,3 +1,4 @@
+import { captureAcquisition } from './acquisition.js';
 import { configureDownloadLinks } from './app-release.js';
 import { enhanceExperience } from './motion.js';
 
@@ -74,3 +75,4 @@ if ('IntersectionObserver' in window && !reducedMotion) {
 
 enhanceExperience();
 configureDownloadLinks();
+captureAcquisition();
